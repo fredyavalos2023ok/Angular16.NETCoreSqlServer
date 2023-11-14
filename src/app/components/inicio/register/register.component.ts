@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Usuario } from 'src/app/models/usuario';
@@ -11,10 +11,10 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  register: FormGroup;
+  register: UntypedFormGroup;
   loading = false;
 
-  constructor(private fb: FormBuilder, 
+  constructor(private fb: UntypedFormBuilder, 
               private usuarioService: UsuarioService,
               private router: Router,
               private toastr: ToastrService) { 
@@ -50,7 +50,7 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  checkPassword(group: FormGroup): any {
+  checkPassword(group: UntypedFormGroup): any {
     const pass = group.controls.password.value;
     const confirmPass = group.controls.confirmPassword.value;
     return pass === confirmPass ? null : { notSame: true};

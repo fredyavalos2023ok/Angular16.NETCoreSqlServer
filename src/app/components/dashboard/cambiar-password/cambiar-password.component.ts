@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UsuarioService } from 'src/app/services/usuario.service';
@@ -10,9 +10,9 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   styleUrls: ['./cambiar-password.component.css']
 })
 export class CambiarPasswordComponent implements OnInit {
-  cambiarPassword: FormGroup;
+  cambiarPassword: UntypedFormGroup;
   loading = false;
-  constructor(private fb: FormBuilder,
+  constructor(private fb: UntypedFormBuilder,
               private usuarioService: UsuarioService,
               private toastr: ToastrService,
               private router: Router) {
@@ -26,7 +26,7 @@ export class CambiarPasswordComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  checkPassword(group: FormGroup): any {
+  checkPassword(group: UntypedFormGroup): any {
     const pass = group.controls.nuevaPassword.value;
     const confirmPass = group.controls.confirmPassword.value;
     return pass === confirmPass ? null : { notSame: true};
