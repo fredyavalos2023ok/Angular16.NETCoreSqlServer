@@ -1,48 +1,48 @@
-import { Component, OnInit } from '@angular/core';
-import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
-import { Usuario } from '../../../models/usuario';
-import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
-import { LoginService } from 'src/app/services/login.service';
+import { Component, OnInit } from '@angular/core';//OK
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';//Aquí estaba { FormGroup, FormBuilder, Validators } from '@angular/forms'
+import { Usuario } from '../../../models/usuario';//OK
+import { ToastrService } from 'ngx-toastr';//OKK
+import { Router } from '@angular/router';//OKK
+import { LoginService } from 'src/app/services/login.service';//OKKK
 
-@Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+@Component({//OK
+  selector: 'app-login',//OK
+  templateUrl: './login.component.html',//OK
+  styleUrls: ['./login.component.css']//OK
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit {//OK
   loading = false;
-  login: UntypedFormGroup;
+  login: UntypedFormGroup;//Aquí estaba login: FormGroup;
 
-  constructor(private fb: UntypedFormBuilder,
-              private toastr: ToastrService,
-              private router: Router,
-              private loginService: LoginService) {
-    this.login = this.fb.group({
-      usuario: ['', Validators.required],
-      password: ['', Validators.required]
+  constructor(private fb: UntypedFormBuilder,//OK
+              private toastr: ToastrService,//OKK
+              private router: Router,//OKK
+              private loginService: LoginService) {//OKKK
+    this.login = this.fb.group({//OK
+      usuario: ['', Validators.required],//OK
+      password: ['', Validators.required]//OK
     });
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {//OK
   }
 
-  log(): void{
-    const usuario: Usuario = {
-      nombreUsuario: this.login.value.usuario,
-      password: this.login.value.password
-    };
-    this.loading = true;
-    this.loginService.login(usuario).subscribe(data => {
-      console.log(data);
-      this.loading = false;
-      this.loginService.setLocalStorage(data.usuario);
-      this.router.navigate(['/dashboard']);
-    }, error => {
-      console.log(error);
-      this.loading = false;
-      this.toastr.error(error.error.message, 'Error');
-      this.login.reset();
+  log(): void{//OK
+    const usuario: Usuario = {//OK
+      nombreUsuario: this.login.value.usuario,//OK
+      password: this.login.value.password//OK
+    };//OK
+    this.loading = true;//OKK
+    this.loginService.login(usuario).subscribe(data => {//OKKK
+      console.log(data);//OKKK
+      this.loading = false;//OKKK
+      this.loginService.setLocalStorage(data.usuario);//OKKKKK
+      this.router.navigate(['/dashboard']);//OKKKK
+    }, error => {//OKKK
+      console.log(error);//OKKK
+      this.loading = false;//OKKK
+      this.toastr.error(error.error.message, 'Error');//OKKKK
+      this.login.reset();//OKKKK
     });
     /* setTimeout(() => {
       if (usuario.nombreUsuario === 'truizdiaz' && usuario.password === 'admin123'){

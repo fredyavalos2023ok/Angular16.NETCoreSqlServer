@@ -7,16 +7,16 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./cuestionarios.component.css']
 })
 export class CuestionariosComponent implements OnInit {
-  nombreUsuario: string;
+  nombreUsuario: string;//OKK
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService) { }//OKK
 
-  ngOnInit(): void {
-    this.getNombreUsuario();
-  }
+  ngOnInit(): void {//OKKK
+    this.getNombreUsuario();//OKKK
+  }//OKKK
 
-  getNombreUsuario(): void{
-    this.nombreUsuario = this.loginService.getNombreUsuario();
-  }
+  getNombreUsuario(): void{//OKK que en realidad es el OKKKKKK del servicio login
+    this.nombreUsuario = this.loginService.getNombreUsuario();//OKK
+  }//OKK
 
 }

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { LoginService } from 'src/app/services/login.service';
+import { Component, OnInit } from '@angular/core';//OK
+import { Router } from '@angular/router';//OKKK
+import { LoginService } from 'src/app/services/login.service';//OKK
 
 @Component({
   selector: 'app-navbar',
@@ -9,15 +9,15 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private loginSerice: LoginService,
-              private router: Router) { }
+  constructor(private loginSerice: LoginService,//OKK
+              private router: Router) { }//OKKK
 
   ngOnInit(): void {
   }
 
   logOut(): void{
-    this.loginSerice.removeLocalStorge();
-    this.router.navigate(['/inicio']);
+    this.loginSerice.removeLocalStorge();//OKK
+    this.router.navigate(['/inicio']);//OKKK
   }
 
 }
