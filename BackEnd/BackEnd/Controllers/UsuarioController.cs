@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -44,20 +44,19 @@ namespace BackEnd.Controllers
         }
 
         // localhost:xxx/api/Usuario/CambiarPassword
-        [Route("CambiarPassowrd")]
+        [Route("CambiarPassword")]
         [HttpPut]
         public async Task<IActionResult> CambiarPassword([FromBody] CambiarPasswordDTO cambiarPassword)
         {
             try
             {
-                int idUsuario = 13;
+                int idUsuario = 1;
                 string passwordEncriptado = Encriptar.EncriptarPassword(cambiarPassword.passwordAnterior);
                 var usuario = await _usuarioService.ValidatePassword(idUsuario, passwordEncriptado);
                 if (usuario == null)
                 {
                     return BadRequest(new { message = "La password es incrorrecta" });
-                }
-                else
+                }else
                 {
                     usuario.Password = Encriptar.EncriptarPassword(cambiarPassword.nuevaPassword);
                     await _usuarioService.UpdatePassword(usuario);

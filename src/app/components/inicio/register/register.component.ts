@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {//OK
   register: UntypedFormGroup;//Aquí estaba register: FormGroup;
   loading = false;
 
-  constructor(private fb: UntypedFormBuilder, //OK Aquí había private fb: FormBuilder
+  constructor(private fb: UntypedFormBuilder, //OK Aquí había private fb: FormBuilder antes de migrar la versión
               private usuarioService: UsuarioService,//OKK
               private router: Router,///OKKK
               private toastr: ToastrService) { //OKKK

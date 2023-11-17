@@ -9,14 +9,14 @@ import { LoginService } from 'src/app/services/login.service';//OKK
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private loginSerice: LoginService,//OKK
+  constructor(private loginService: LoginService,//OKK
               private router: Router) { }//OKKK
 
   ngOnInit(): void {
   }
 
   logOut(): void{
-    this.loginSerice.removeLocalStorge();//OKK
+    this.loginService.removeLocalStorge();//OKK
     this.router.navigate(['/inicio']);//OKKK
   }
 
